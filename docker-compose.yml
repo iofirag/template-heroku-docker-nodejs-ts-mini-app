@@ -23,10 +23,11 @@ services:
     # Exposes the necessary ports that our node app uses
     ports:
       - "3000:3000"
+      - "9229:9229"
     # All the services our node app will link to -
     # which in our case is only mongo
     # You can other services such as a Redis
-    links:
+    links: # depends_on alias name
       # The name should be similar to the service you will build
       - mongo
   # Our database service called mongo

@@ -16,3 +16,13 @@ run:
 $ heroku container:push web -a docker-nodejs-app-oa
 $ heroku container:release web -a docker-nodejs-app-oa
 $ heroku open -a docker-nodejs-app-oa
+
+
+* Features: *
+docker
+  nodemon
+    hot-reload
+  inspector
+    breakpoint
+    breakpoint-wait
+  ts-node

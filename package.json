@@ -13,16 +13,16 @@
 
     "------development------": "",
     "---working-docker-online---": "",
-    "start:dev:hotreload": "nodemon -L --exec ts-node server.ts",
+    "dev:hot-reload": "nodemon -L --exec ts-node server.ts",
+    "dev:hot-reload:debug": "nodemon -L --exec node --inspect=0.0.0.0:9229 -r ts-node/register server.ts",
+    "dev:hot-reload:debug:wait": "nodemon -L --exec node --inspect-brk=0.0.0.0:9229 -r ts-node/register server.ts",
     
     "---working-docker---": "",
     
     "---working-with-pure-node---": "",
-    "start:dev:hotreload-debug": "nodemon -L --exec node --inspect=0.0.0.0 -r ts-node/register server.ts",
-    "start:dev:hotreload-debug-wait": "nodemon -L --exec node --inspect-brk=0.0.0.0 -r ts-node/register server.ts",
     
     "---didnt-working---": "",
-    "didnt-working-start:dev:hotreload-debug-wait": "nodemon --exec 'ts-node --inspect-brk=0.0.0.0:9229 --require ts-node/register server.ts'"
+    "didnt-working:dev:hot-reload:debug:wait": "nodemon --exec 'ts-node --inspect-brk=0.0.0.0:9229 --require ts-node/register server.ts'"
   },
   "dependencies": {
     "express": "^4.17.1",
