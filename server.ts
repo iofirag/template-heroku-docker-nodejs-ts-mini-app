@@ -24,7 +24,7 @@ const connectDB = async (DBconnectionString) => {
 
 (async () => {
   try {
-    const connected = await connectDB(process.env.DB_CONNECTION_STRING);
+    const connected = await connectDB(process.env.MONGODB_URI);
     console.log("Connected to mongo database successfully");
   } catch(e) {
     console.log('Error happend while connecting to the DB: ', e.message)
@@ -37,6 +37,7 @@ const data = {
   blog_name: "docker_nodejs_app",
   blog_author: "wachira (tesh254)",
   blog_author_twitter: "@wachira_dev",
+  db_connection_string: `connection string: ${process.env.MONGODB_URI}`,
   isDBConnected: false,
 };
 /**

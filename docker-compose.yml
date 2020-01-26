@@ -1,3 +1,4 @@
+# Currently used just for development propose
 # Defines our composer file version
 version: "2.2"
 # Define our services 
@@ -17,6 +18,7 @@ services:
     env_file:
       - environment/default.env
       - environment/dev.env
+    command: yarn dev:hot-reload  # Override the (production) command that in Dockerfile
     volumes:
       - ./:/usr/src/app
       - /usr/src/app/node_modules # Remove this if you have pure JS dependencies
