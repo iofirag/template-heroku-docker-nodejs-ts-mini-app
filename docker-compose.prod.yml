@@ -1,0 +1,13 @@
+# Uncomment this file when using docker-compose for production propose with 'prod.env' file
+
+# # Defines our composer file version
+# version: "2.2"
+# # Override our services 
+# services: 
+#   # This is our nodejs app built using the Dockerfile
+#   app:
+#     env_file:
+#       - environment/default.env
+#       - environment/prod.env
+#     ports:
+#       - "3000:3000"
