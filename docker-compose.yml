@@ -11,6 +11,15 @@ services:
     # Builds the node app docker container from the local -
     # Docker file we created
     build: .
+    # Environment file we created
+    # environment:
+    #   - NODE_ENV=production
+    env_file:
+      - environment/default.env
+      - environment/dev.env
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules # Remove this if you have pure JS dependencies
     # Exposes the necessary ports that our node app uses
     ports:
       - "3000:3000"

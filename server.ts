@@ -11,36 +11,26 @@ const app = express();
  */
 app.set("port", process.env.PORT || 3000);
 
-const DBConfig = {
-  user: 'admin',
-  pass: '1234abcd',
-  url: 'ds235417.mlab.com',
-  port: 35417,
-  databaseName: 'praypay'
+console.log(process.env.COMPOSE_PROJECT_NAME)
+
+const connectDB = async (DBconnectionString) => {
+  console.log(`Connecting to DB - uri: ${DBconnectionString}`);
+  return mongoose.connect(DBconnectionString, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+  });
 };
 
-try {
-  // Connect to database
-  mongoose.connect(
-    // "mongodb://mongo:27017/docker_nodejs_app"
-    `mongodb://${DBConfig.user}:${DBConfig.pass}@${DBConfig.url}:${DBConfig.port}/${DBConfig.databaseName}`
-    , {
-    useNewUrlParser: true,
-    useCreateIndex: true
-  });
-  
-  mongoose.connection.on("open", err => {
-    if (err) console.log("Error connecting to our mongo database");
+(async () => {
+  try {
+    const connected = await connectDB(process.env.DB_CONNECTION_STRING);
     console.log("Connected to mongo database successfully");
-  });
-} catch (ex) {
-  console.log("Can't connect to mongo database");
-}
+  } catch(e) {
+    console.log('Error happend while connecting to the DB: ', e.message)
+  }
+})();
 
-/**
- * To ensure works as it should we will create a
- * simple endpoint to return a json response
- */
 
 // Define our json response
 const data = {
@@ -49,7 +39,10 @@ const data = {
   blog_author_twitter: "@wachira_dev",
   isDBConnected: false,
 };
-
+/**
+ * To ensure works as it should we will create a
+ * simple endpoint to return a json response
+ */
 // Define out GET request endpoint
 app.get("/", (req, res) => {
   data.isDBConnected = !!mongoose.connection

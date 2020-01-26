@@ -3,7 +3,7 @@
 FROM node:8
 
 # Create an app directory to hold the application code
-WORKDIR /usr/docker_nodejs_app/src/app
+WORKDIR /usr/src/app
 
 # Duplicate the dependency file to the container's project root directory.
 COPY package*.json ./
