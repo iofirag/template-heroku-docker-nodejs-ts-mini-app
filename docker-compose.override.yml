@@ -27,7 +27,7 @@ services:
   mongo:
     # The name of the database container, NOTE: it is similar to the name provided
     # in the links value
-    container_name: mongo
+    container_name: ${COMPOSE_PROJECT_NAME}_mongo
     # Builds a mongo image from the docker repository
     image: mongo
     # Exposes the ports that mongo uses
@@ -39,6 +39,7 @@ services:
     # - COMPOSE_CONVERT_WINDOWS_PATHS=1
   # Development only
   adminmongo:
+    container_name: ${COMPOSE_PROJECT_NAME}_adminmongo
     image: "mrvautin/adminmongo"
     restart: always
     environment:
