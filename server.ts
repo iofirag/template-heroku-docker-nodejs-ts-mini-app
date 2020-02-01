@@ -22,7 +22,7 @@ enum ConnectionStatusEnum {
 
 // Define our json response
 const data = {
-  blog_name: `${process.env.COMPOSE_PROJECT_NAME}`,
+  project_name: `${process.env.COMPOSE_PROJECT_NAME}`,
   NODE_ENV: `${process.env.NODE_ENV}`,
   db_connection_string: `connection string: ${process.env.MONGODB_URI}`,
   db_connection_status: '',

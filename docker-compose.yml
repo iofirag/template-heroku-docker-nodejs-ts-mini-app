@@ -10,8 +10,8 @@ services:
     # Builds the node app docker container from the local - Docker file we created
     build: .
     # Environment file we created
-    # env_file:
-      # - environment/default.env # not used when using our '.env' file as a 'default.env'
+    env_file:
+      - ./.env
     volumes:
       - ./:/usr/src/app
       - /usr/src/app/node_modules # Remove this if you have pure JS dependencies

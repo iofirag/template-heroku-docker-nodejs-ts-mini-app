@@ -10,5 +10,4 @@ services:
     restart: always
     # Environment file we created
     env_file:
-      # - environment/default.env # not used when using our '.env' file as a 'default.env'
       - environment/prod.env

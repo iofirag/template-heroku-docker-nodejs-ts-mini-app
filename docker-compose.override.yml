@@ -2,18 +2,20 @@
 # Development-Override compose configuration
 # Defines our composer file version
 version: "3"
+
+volumes:
+  mongovolume:
+
 # Define our services 
 services: 
   # This is our nodejs app built using the Dockerfile
   app:
     # Environment file we created
     env_file:
-      # - environment/default.env # not used when using our '.env' file as a 'default.env'
       - environment/dev.env
     command: yarn dev:hot-reload  # Override the (production) command that in Dockerfile
     # Exposes the necessary ports that our node app uses
     ports:
-      - "3000:3000"
       - "9229:9229"
     # All the services our node app will link to -
     # which in our case is only mongo
@@ -31,6 +33,10 @@ services:
     # Exposes the ports that mongo uses
     ports:
       - "27017:27017"
+    volumes:
+      - mongovolume:/data/db # working - volume created in volume section
+    # environment:
+    # - COMPOSE_CONVERT_WINDOWS_PATHS=1
   # Development only
   adminmongo:
     image: "mrvautin/adminmongo"
