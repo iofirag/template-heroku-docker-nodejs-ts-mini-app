@@ -1,0 +1,41 @@
+# Used for development propose
+# Development-Override compose configuration
+# Defines our composer file version
+version: "3"
+# Define our services 
+services: 
+  # This is our nodejs app built using the Dockerfile
+  app:
+    # Environment file we created
+    env_file:
+      # - environment/default.env # not used when using our '.env' file as a 'default.env'
+      - environment/dev.env
+    command: yarn dev:hot-reload  # Override the (production) command that in Dockerfile
+    # Exposes the necessary ports that our node app uses
+    ports:
+      - "3000:3000"
+      - "9229:9229"
+    # All the services our node app will link to -
+    # which in our case is only mongo
+    # You can other services such as a Redis
+    links: # depends_on alias name
+      # The name should be similar to the service you will build
+      - mongo
+  # Our database service called mongo
+  mongo:
+    # The name of the database container, NOTE: it is similar to the name provided
+    # in the links value
+    container_name: mongo
+    # Builds a mongo image from the docker repository
+    image: mongo
+    # Exposes the ports that mongo uses
+    ports:
+      - "27017:27017"
+  # Development only
+  adminmongo:
+    image: "mrvautin/adminmongo"
+    restart: always
+    environment:
+      - HOST=0.0.0.0
+    ports:
+      - "1234:1234"
