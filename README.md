@@ -30,12 +30,12 @@ docker
 * Development / vpn *
   change script in docker-compose.override.yml to one of 'dev:hot-reload' | 'dev:hot-reload:debug' | 'dev:hot-reload:debug:wait'
   run:
-    $ develop.bat
+    $ run-as-develop-mode.bat
 
 
 * Production *
   run: 
-    $ deploy.bat
+    $ run-as-production-mode.bat
 
 
 * Production for Heroku *
