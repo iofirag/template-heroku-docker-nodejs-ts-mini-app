@@ -21,7 +21,7 @@
     "didnt-working:dev:hot-reload:debug:wait": "nodemon --exec 'ts-node --inspect-brk=0.0.0.0:9229 --require ts-node/register server.ts'"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mongoose": "^5.8.7",
     "ts-node": "^8.6.2"
   },
